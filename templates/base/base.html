@@ -1,0 +1,82 @@
+{% load static %}
+<html lang="en">
+<head>
+
+
+<link rel="shortcut icon" href="http://img.mp.itc.cn/upload/20170724/cf678e09eb384401aa616ba134126357_th.jpg" type="image/x-icon">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+    <!--[if lt IE 9]>
+{#    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>#}
+{#    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>#}
+    <![endif]-->
+    {% block cssjs %}
+    {% endblock cssjs %}
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'base/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'base/css/base500.css' %}"/>
+
+
+
+    <script type="text/javascript" charset="utf-8" src="{% static 'base/js/base.js' %}"></script>
+    <title>手机专卖</title>
+</head>
+<body>
+<header>
+    <div class="login-a">
+        {% if username == 1 %}
+            <span></span>
+        {% elif username %}
+            <span>欢迎，{{ username }}...</span>
+        {% else %}
+            <a href="{% url 'jdsj:login' %}">[请登录!]</a>
+        {% endif %}
+    </div>
+</header>
+<div class="contain">
+    {% block base %}
+    {% endblock base %}
+</div>
+<footer>
+    <a href="/">
+        <dl>
+            <dt><span class="glyphicon glyphicon-home"></span></dt>
+            <dd>主页</dd>
+        </dl>
+
+
+    </a>
+    <a href="{% url 'jdsj:cart' 1 1 %}">
+        <dl>
+            <dt><span class="glyphicon glyphicon-shopping-cart"></span></dt>
+            <dd>购物车</dd>
+        </dl>
+    </a>
+    <a href="{% url 'jdsj:mine' %}">
+        <dl id="me" >
+            <dt><span class="glyphicon glyphicon-user"></span></dt>
+            <dd>我的</dd>
+        </dl>
+    </a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+    <script type="text/javascript" src="{% static 'cart/js/cart.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+{% block base %}
+    <div class="top-dis"></div>
+
+    {% for order in order_list %}
+        <div>
+            {% if order.flag %}
+                <a class="glyphicon glyphicon-ok-sign a-choose pull-right"
+                   href="{% url 'jdsj:comm_choose' order.pid %}"></a>
+            {% else %}
+                <a class="glyphicon glyphicon-ok-circle a-choose pull-right"
+                   href="{% url 'jdsj:comm_choose' order.pid %}"></a>
+            {% endif %}
+            <img class="img-order pull-left" src="{{ order.img_url }}"
+                 alt="">
+            <div class="pull-left detail-cart">
+                <ul class="list-unstyled">
+                    <li class="li-title">{{ order.title|truncatechars:31 }} ...</li>
+                    <li class="li-color">{{ order.color }} {{ order.config }}</li>
+
+                    <li class="li-price"><span>￥{{ order.price }}</span>
+                        <div class="span-choose pull-right">
+                            <a class="glyphicon glyphicon-menu-down btn-default btn-info"
+                               href="{% url 'jdsj:sub' order.pid %}"></a>
+                            <div id="light" class="pop_win">
+                                <form action="{% url 'jdsj:change-count' order.pid %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="{{ formss.num.label }}">
+                                            {{ formss.num.label }}
+                                        </label>
+                                        {{ formss.num }}
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                                </form>
+                                <a  class="btn btn-default btn-lg" href="javascript:void(0)" onclick="closeWin();">取消</a>
+
+                            </div>
+                            <div id="fade" class="black_overlay"></div>
+
+                            <a href="javascript:void(0)" onclick="popWin();"
+                               class="btn btn-default span-count">{{ order.count }}</a>
+                            <a class="glyphicon glyphicon-menu-up btn-default btn-info"
+                               href="{% url 'jdsj:add' order.pid %}"></a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="place-order">
+        <span>总金额：</span>
+        <a class="btn btn-default account-sum btn-danger" href="{% url 'jdsj:account-sum' %}">结算</a>
+        <span style="">{{ sum_price }}</span>
+        {% if flag_all %}
+            <a class="glyphicon glyphicon-ok-sign a-choose pull-right"
+               href="{% url 'jdsj:comm_chooseall' 0 %}">全选</a>
+        {% else %}
+            <a class="glyphicon glyphicon-ok-circle a-choose pull-right"
+               href="{% url 'jdsj:comm_chooseall' 1 %}">全不选</a>
+        {% endif %}
+    </div>
+
+
+    <div class="bottom-dis"></div>
+    {% if message != '1' %}
+        <script type="text/javascript">alert('{{ message }}')</script>
+    {% endif %}
+
+
+
+{% endblock %}

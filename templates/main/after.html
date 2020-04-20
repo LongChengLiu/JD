@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+
+    <script type="text/javascript" src="{% static 'main/js/toucher.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'main/css/main500.css' %}"/>
+
+{% endblock cssjs %}
+{% block base %}
+    <div class="top-dis"></div>
+
+<span style="font-size:18px;"> </span><span style="font-size:24px;"><meta http-equiv="refresh" content="2;URL={% url after_url %}"> </span>
+<div class="after-page"><p>{{ message }}</p><p>2秒之后自动跳转到{{ after_page }}</p></div>
+
+    <div class="bottom-dis"></div>
+{% endblock base %}
+

@@ -1,0 +1,101 @@
+.outer-container, .content {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 104, 104, 0.17);
+}
+
+.outer-container {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.search-inpt{
+    width: 70%;
+}
+
+.inner-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.thumbnail {
+    float: left;
+    width: 50%;
+    margin: 0;
+    height: auto;
+    font-size: 5px;
+}
+
+.slide{
+    margin: 0;
+}
+
+
+.search {
+    display: inline;
+    margin: 0;
+    height: 30px;
+}
+
+
+
+.caption {
+    height: 220px;
+    font-size: 8px;
+}
+
+.title, .price {
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.price, .defaultGoodCountStr {
+    color: red;
+}
+
+.commentCountStr, .goodRateShow {
+    margin: 0 0 4px 10px;
+}
+
+ul > li {
+    display: inline;
+}
+
+.img_detail {
+    height: 100%;
+}
+
+
+.btn {
+    width: auto;
+    height: 20px;
+    font-size: 6px;
+    line-height: 6px;
+}
+
+
+
+
+
+
+.attr {
+    font-size: 10px;
+}
+
+
+#forget{
+    display: block;
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+#sli-img{
+    width: 100%;
+    height:200px;
+}
+

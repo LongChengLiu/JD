@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block cssjs %}
+    <script type="text/javascript" src="{% static 'main/js/toucher.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/main.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'main/css/main500.css' %}"/>
+
+{% endblock cssjs %}
+{% block base %}
+    <div class="top-dis"></div>
+    <form action="{% url 'jdsj:forget' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ register_form.email.label }}">
+                {{ register_form.email.label }}
+                {{ register_form.email }}
+            </label>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary">点击发送邮件</button>
+    </form>
+    <div class="bottom-dis"></div>
+    <span>{{ message }}</span>
+{% endblock base %}

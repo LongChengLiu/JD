@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+    <script type="text/javascript" src="{% static 'cart/js/cart.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
+
+
+
+{% block base %}
+    <div class="top-dis"></div>
+
+    {% for cart in cart_list %}
+        <div>
+            <img class="img-order pull-left" src="{{ cart.img_url }}"
+                 alt="">
+            <div class="pull-left detail-cart">
+                <ul class="list-unstyled">
+                    <li class="li-title">{{ cart.title|truncatechars:31 }} ...</li>
+                    <li class="li-color">{{ cart.color }} {{ cart.config }}</li>
+                    <li class="li-price"><span>￥{{ cart.price }}</span></li>
+                    <li><span>   数量：</span><span class="btn btn-default span-count">{{ cart.count }}</span></li>
+                    <li><span>金额：{{ cart.sum_price }}</span></li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="bottom-dis"></div>
+{% endblock %}

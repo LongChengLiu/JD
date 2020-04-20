@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+    <script type="text/javascript" src="{% static 'main/js/toucher.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/main.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'main/css/main500.css' %}"/>
+{% endblock cssjs %}
+{% block base %}
+    <div class="top-dis"></div>
+
+    <form action="{% url 'jdsj:registing' verif %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ register_form.nick_name.label }}">
+                {{ register_form.nick_name.label }}
+                {{ register_form.nick_name }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.sex.label }}">
+                {{ register_form.sex.label }}
+                {{ register_form.sex }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.birth.label }}">
+                {{ register_form.birth.label }}
+                {{ register_form.birth }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.tell.label }}">
+                {{ register_form.tell.label }}
+                {{ register_form.tell }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.pwd1.label }}">
+                {{ register_form.pwd1.label }}
+                {{ register_form.pwd1 }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.pwd2.label }}">
+                {{ register_form.pwd2.label }}
+                {{ register_form.pwd2 }}
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-primary">点击注册</button>
+        <script type="text/javascript"> alert('{{ message }}')</script>
+    </form>
+    <div class="bottom-dis"></div>
+{% endblock base %}

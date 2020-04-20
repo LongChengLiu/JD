@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+
+    <script type="text/javascript" src="{% static 'mine/js/mine.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'mine/css/mine.css' %}">
+
+{% endblock cssjs %}
+{% block base %}
+    <div class="top-dis"></div>
+    <form action="{% url 'jdsj:info' %}" method="post" class="form-all">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ register_form.nick_name.label }}">
+                {{ register_form.nick_name.label }} : <mark><em>{{ u1.nick_name }}</em></mark>
+                {{ register_form.nick_name }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.sex.label }}">
+                {{ register_form.sex.label }} : <mark><em>{{ u1.sex }}</em></mark>
+                {{ register_form.sex }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.birth.label }}">
+                {{ register_form.birth.label }} : <mark><em>{{ u1.birth }}</em></mark>
+                {{ register_form.birth }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.tell.label }}">
+                {{ register_form.tell.label }} : <mark><em>{{ u1.tell }}</em></mark>
+                {{ register_form.tell }}
+            </label>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary">点击修改</button>
+    </form>
+    <div class="bottom-dis"></div>
+    {% if message %}
+    <script type="text/javascript">alert('{{ message }}')</script>
+    {% endif %}
+{% endblock base %}

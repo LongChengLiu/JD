@@ -1,0 +1,102 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+
+    <script type="text/javascript" src="{% static 'main/js/toucher.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/main.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'main/css/main500.css' %}"/>
+
+
+{#    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">#}
+
+{% endblock cssjs %}
+{% block base %}
+    <div class="top-dis"></div>
+    <form class="form-inline slide" method="post" action="{% url 'jdsj:search' %}">
+    {% csrf_token %}
+        <div class="form-group slide">
+            <label class="slide" for="">
+                <input type="text"
+                       name="search-name" class="form-control search input-sm search-inpt" placeholder=" 请输入搜索内容">
+                <button type="submit" class="btn btn-default search btn-sm">搜索</button>
+            </label>
+        </div>
+    </form>
+    {#                滚动广告#}
+    <!--
+      以下容器就是整个轮播图组件的整体，
+      注意该盒子必须加上 class="carousel slide" data-ride="carousel" 表示当前是一个轮播图
+      bootstrap.js会自动为当前元素添加图片轮播的特效
+    -->
+    <div id="carousel-example-generic" class="carousel slide center-block" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="{% url 'jdsj:detail' first_slide.skid 1 %}">
+                    <img id="sli-img" src="{{ first_slide.img_url }}" alt="...">
+                </a>
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            {% for slide in slides %}
+                {% if forloop.counter != 1 %}
+                    <div class="item">
+                        <a href="{% url 'jdsj:detail' slide.skid 1 %}">
+                            <img id="sli-img" src="{{ slide.img_url }}" alt="...">
+                        </a>
+                        <div class="carousel-caption">
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- Controls -->
+        <a id="left" class="left carousel-control" href="#carousel-example-generic" role="button"
+           data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a id="right" class="right carousel-control" href="#carousel-example-generic" role="button"
+           data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!--下面测试图片居中方式，carousel不能用text-aline:center 实现居中-->
+    {% for phone in phone_list %}
+        <div class="thumbnail float-left">
+            <a href="{% url 'jdsj:detail' phone.skid 1 %}">
+                <img src="{{ phone.image_url }}" alt="...">
+            </a>
+            <div class="caption">
+                <p class="title">{{ phone.title | truncatechars:45 }}...</p>
+                <p class="price">￥{{ phone.price }}</p>
+                <p class="commentCountStr">{{ phone.commentCountStr }}条评论</p>
+                <p class="defaultGoodCountStr">{{ phone.defaultGoodCountStr }}好评</p>
+                <p class="goodRateShow"><span>{{ phone.goodRateShow }}%</span>好评</p>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <script type="text/javascript">{{script}}('{{wrong}}')</script>
+
+    <div class="bottom-dis"></div>
+{% endblock base %}
+
+
+

@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+
+    <script type="text/javascript" src="{% static 'main/js/toucher.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/main.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'main/css/main500.css' %}"/>
+
+{% endblock cssjs %}
+{% block base %}
+    <div class="top-dis"></div>
+    <form method="post" action="{% url 'jdsj:login' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ register_form.email.label }}">
+                {{ register_form.email.label }}
+            </label>
+            {{ register_form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ register_form.pwd1.label }}">
+                {{ register_form.pwd1.label }}
+            </label>
+            {{ register_form.pwd1 }}
+        </div>
+        {#        <div class="checkbox form-group-lg">#}
+        {#            <label>#}
+        {#                <input type="checkbox" style="width: 1rem;#}
+        {#    font-size: 0.5rem;#}
+        {#    height: 0.5rem;margin: 0">#}
+        {#            </label>#}
+        <a id="forget" href="{% url 'jdsj:forget' %}">[忘记密码]</a>
+        {#            <a style="margin: 1rem;font-size: 0.5rem" href="">请阅读...并同意勾选</a>#}
+        {#        </div>#}
+        <button type="submit" class="btn btn-primary btn-lg">登录</button>
+        <a href="{% url 'jdsj:register' %}" class="btn btn-default btn-lg">注册</a>
+    </form>
+
+
+
+
+    <div class="bottom-dis"></div>
+
+
+{% endblock base %}

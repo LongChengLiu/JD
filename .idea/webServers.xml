@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f88ff655-5b69-469b-aff1-625f37d4ef39" name="ubuntu" url="http://192.144.163.171">
+        <fileTransfer rootFolder="/home/ubuntu/group/Jd" accessType="SFTP" host="192.144.163.171" port="22" sshConfigId="aac63102-045d-4498-8cfa-7e0c796d9442" sshConfig="ubuntu@192.144.163.171:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

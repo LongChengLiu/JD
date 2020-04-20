@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block cssjs %}
+    <script type="text/javascript" src="{% static 'mine/js/mine.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'mine/css/mine.css' %}">
+{% endblock %}
+
+
+
+
+{% block base %}
+    <div class="top-dis"></div>
+    <span class="strong">余额：</span><span>{{ balance }}</span>
+    <p></p>
+    <div>
+        <span class="span">如需体验操作请扫下方二维码并通过邮箱通知程序员并发送支付截图，发送后一天内到账(需要到后台自己改，所以慢，见谅！)</span>
+    </div>
+    <div>
+        <span class="span">邮箱：979746262@qq.com</span>
+    </div>
+    <div>
+    <span class="span">
+        充值比例每0.01元 兑换 10000.00元
+    </span>
+        <img class="qrcode-pic" src="http://q8gl2rnhc.bkt.clouddn.com/f88e2a3c98278525d0e8cb5d3b0f23d.jpg" alt="">
+    </div>
+    <div class="bottom-dis"></div>
+{% endblock %}

@@ -1,0 +1,95 @@
+.detail-cart {
+    font-size: 15px;
+    width: 200px;
+    height: 150px;
+}
+
+
+.img-order {
+    width: 100px;
+    height: auto;
+}
+
+
+.span-count {
+    width: 40px;
+    height: 20px;
+    font-size: 3px;
+    margin: 0 15px;
+    line-height: 10px;
+
+}
+
+.span-choose {
+    margin: 0 10px;
+    float: right;
+}
+
+.a-choose {
+    font-size: 10px;
+    margin: 10px 20px;
+    line-height: 10px;
+}
+
+.place-order {
+    width: 100%;
+    height: 30px;
+    background: #ffffff;
+    position: fixed;
+    bottom: 36px;
+    left: 0;
+    padding: 2px;
+    font-size: 15px;
+}
+
+.btn-default {
+    font-size: 8px;
+}
+
+
+
+.account-sum {
+    position: fixed;
+    right: 90px;
+    bottom: 40px;
+    height: 20px;
+    line-height: 7.5px;
+}
+
+.bottom-dis {
+
+    clear: both;
+}
+
+.black_overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #c8c8c8;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=78);
+}
+
+.btn-lg{
+    line-height: 0.3px;
+}
+
+.pop_win {
+    display: none;
+    position: absolute;
+    top: 17%;
+    left: 27%;
+    width: 55%;
+    height: auto;
+    padding: 20px;
+    border: 2px solid cornflowerblue;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 9999;
+    overflow: auto;
+}

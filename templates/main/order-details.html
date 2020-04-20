@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% load ext_fliter %}
+
+{% block cssjs %}
+
+    <script type="text/javascript" src="{% static 'main/js/toucher.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/main.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:420px)" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:420px) and (max-width:3000px)"
+          href="{% static 'main/css/main500.css' %}"/>
+
+{% endblock cssjs %}
+
+
+
+{% block base %}
+    <div class="top-dis"></div>
+    <div>
+        <div class="top-container">
+            <div id="carousel-example-generic" class="carousel slide center-block" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    {% for image in images %}
+                        {% if forloop.counter == 1 %}
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                        {% else %}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter }}"></li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    {% for image in images %}
+                        {% if forloop.counter == 1 %}
+                            <div class="item active">
+                                <img class="img_detail" src="{{ image|rep_url }}" alt="...">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="item">
+                                <img class="img_detail" src="{{ image|rep_url }}" alt="...">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <!-- Controls -->
+                <a id="left" class="left carousel-control" href="#carousel-example-generic" role="button"
+                   data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a id="right" class="right carousel-control" href="#carousel-example-generic" role="button"
+                   data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="caption">
+            <p class="title">{{ phone.title }}...</p>
+            <p class="price">￥{{ phone.price }}</p>
+            <p class="commentCountStr">{{ phone.commentCountStr }}条评论</p>
+            <p class="defaultGoodCountStr">{{ phone.defaultGoodCountStr }}好评</p>
+            <p class="goodRateShow"><span>{{ phone.goodRateShow }}%</span>好评</p>
+        </div>
+        <div class="list-attr1">
+            <span class="attr">商品颜色：</span>
+            <div>
+                {% for color in colors %}
+                    {% if color == color2 %}
+                        <a href="{% url 'jdsj:detail-col' skid color 1 %}" class="attr1-1 btn btn-primary">{{ color }}</a>
+                    {% else %}
+                        <a href="{% url 'jdsj:detail-col' skid color 1 %}" class="attr1-1 btn btn-default">{{ color }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="list-attr2">
+            <span class="attr">商品配置：</span>
+            <div>
+                {% for config in configs %}
+                    {% if config == config2 %}
+                        <a class="attr2-1 btn btn-primary btn-bg"
+                           href="{% url 'jdsj:detail-con' skid color2 config 1 %}">{{ config }}</a>
+                    {% else %}
+                        <a class="attr2-1 btn btn-default"
+                           href="{% url 'jdsj:detail-con' skid color2 config 1 %}">{{ config }}</a>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'jdsj:addcart' phone.pid %}" class="btn btn-primary btn-lg">加入购物车</a>
+        </div>
+        <div class="detail-config">
+        </div>
+    </div>
+    <div class="bottom-dis"></div>
+    {% if message != '1' %}
+    <script type="text/javascript">alert('{{ message }}')</script>
+    {% endif %}
+
+{% endblock base %}
