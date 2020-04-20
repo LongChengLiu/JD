@@ -33,4 +33,4 @@ assert ret['hash'] == etag_stream(input_stream)
 
 
 # qiuniu yun2222
-132312
+13231
