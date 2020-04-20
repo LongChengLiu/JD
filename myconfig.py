@@ -1,0 +1,5 @@
+user = 'root'
+pwd = 'llc123'
+epwd = 'rbwyygcadirvbeaj'
+access_key = 'HU8AWrostwOmbdeWuzpDuH9J3SsXbKbE6ueTvky1'
+secret_key = 'HUfUhZQPJdloPCeUdECnHr8SmEbv-iyY0dyMZZ6e'
