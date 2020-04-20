@@ -26,5 +26,6 @@ modify_time = int(time.time())
 ret, info =put_stream(token, key, input_stream, file_name, size, params=None,mime_type='application/octet-stream', progress_handler=None,upload_progress_recorder=None,modify_time=modify_time, keep_last_modified=False)
 
 print(info)
+print(info)
 assert ret['key'] == key
 assert ret['hash'] == etag_stream(input_stream)
