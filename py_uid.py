@@ -27,9 +27,10 @@ ret, info =put_stream(token, key, input_stream, file_name, size, params=None,mim
 
 print(info)
 print(info)
+print(info)
 assert ret['key'] == key
 assert ret['hash'] == etag_stream(input_stream)
 
 
-# qiuniu yun
+# qiuniu yun2222
 132312
