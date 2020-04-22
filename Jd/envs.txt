@@ -1,0 +1,17 @@
+asgiref==3.2.3
+certifi==2019.11.28
+cffi==1.14.0
+chardet==3.0.4
+cryptography==2.9
+Django==3.0.3
+idna==2.8
+Pillow==7.1.1
+pycparser==2.20
+PyMySQL==0.9.3
+pytz==2019.3
+PyYAML==5.3
+qiniu==7.2.8
+requests==2.22.0
+six==1.14.0
+sqlparse==0.3.0
+urllib3==1.25.8

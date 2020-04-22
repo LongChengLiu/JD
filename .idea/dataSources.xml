@@ -9,5 +9,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:E:\py-probject\Jd\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@root" uuid="de07e5b4-a9f1-4647-8082-7bbde562fd7f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.144.163.171:3306</jdbc-url>
+    </data-source>
   </component>
 </project>
